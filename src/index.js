@@ -3,36 +3,36 @@ module.exports = function getZerosCount(number, base) {
 
   function getPrimes(number) {
 
-  	let primeFactorials = {},
-  	rest = number,
-  	factorial = 2,
-  	prime = true;
+  	let primefactors = {},
+      	rest = number,
+      	factor = 2,
+      	prime = true;
 
   	while (rest != 1) {
   		
-  		for (let i = 2; i < factorial; i++) {
-  			if (factorial % i == 0) {
+  		for (let i = 2; i < factor; i++) {
+  			if (factor % i == 0) {
   				prime = false;
   				break;
   			}
   		}
 
 
-  		while (prime && (rest % factorial == 0)) {
-  			rest /= factorial;
-  			if (primeFactorials[factorial]) {
-  				primeFactorials[factorial]++;
+  		while (prime && (rest % factor == 0)) {
+  			rest /= factor;
+  			if (primefactors[factor]) {
+  				primefactors[factor]++;
   			} else {
-  				primeFactorials[factorial] = 1;
+  				primefactors[factor] = 1;
   			}
   		}
 
-  		factorial++;
+  		factor++;
   		prime = true;
 
   	}
 
-  	return primeFactorials
+  	return primefactors
 
   }
 
@@ -41,8 +41,10 @@ module.exports = function getZerosCount(number, base) {
   	let counts = [];
 
   	for (key in primes) {
-  		let prime = parseInt(key),
-  				power = 1,
+  		
+      const prime = parseInt(key);
+
+      let power = 1,
   				trunc = Math.trunc(number / prime**power),
   				counter = 0;
 
